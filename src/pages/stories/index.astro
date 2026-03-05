@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const stories = (await getCollection('stories', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Stories" description="People-first stories from London Grove Township — interviews, features, and on-the-ground reporting from local government.">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-heading font-bold text-primary mb-2">Stories</h1>
+    <p class="text-base-content/50 text-lg mb-12 max-w-2xl">
+      Following committees into their work, talking with the people who serve, and documenting local government in a human way.
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {stories.map(story => (
+        <a href={`/stories/${story.id.replace(/\.md$/, '')}`} class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="aspect-video overflow-hidden bg-base-300">
+            {story.data.cover ? (
+              <img
+                src={story.data.cover}
+                alt=""
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <div class="w-full h-full bg-gradient-to-br from-primary to-secondary opacity-80"></div>
+            )}
+          </div>
+          <div class="p-5">
+            <h2 class="font-heading font-bold text-primary text-lg mb-1 group-hover:text-secondary transition-colors">
+              {story.data.title}
+            </h2>
+            <p class="text-sm text-base-content/50 mb-2">
+              {story.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <p class="text-sm text-base-content/70 line-clamp-2">{story.data.description}</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              {story.data.tags.map(tag => (
+                <span class="text-xs text-base-content/40">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

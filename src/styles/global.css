@@ -1,22 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
 
-@layer base {
-  body {
-    @apply font-sans text-dark antialiased;
-    background-color: #cdcfc1;
-  }
+@theme {
+  --font-sans: "Inter", "PT Sans", sans-serif;
+  --font-heading: "Playfair Display", serif;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
+@plugin "daisyui/theme" {
+  name: "londongrove";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #e8eade;
+  --color-base-200: #dfe1d5;
+  --color-base-300: #c8ccbc;
+  --color-base-content: #32373c;
+  --color-primary: #11254d;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0693e3;
+  --color-secondary-content: #ffffff;
+  --color-accent: #e8a435;
+  --color-accent-content: #11254d;
+  --color-neutral: #32373c;
+  --color-neutral-content: #ffffff;
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.95;
+  --tab-radius: 0.5rem;
+}
 
-  a {
-    @apply transition-colors duration-200;
-  }
-
-  :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }

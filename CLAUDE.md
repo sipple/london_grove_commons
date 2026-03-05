@@ -2,11 +2,16 @@
 
 A community resource site bringing transparency and accessibility to local government in London Grove Township, Pennsylvania. **Not an official township website.**
 
+The site features **Stories** — people-first content following committees into their work, interviewing the people who serve, and documenting local government in a human way.
+
 ## Tech Stack
 
 - **Framework**: Astro (static site generator)
-- **Styling**: Tailwind CSS via `@astrojs/tailwind`
-- **Fonts**: Google Fonts — PT Sans (body), Antic Slab (headings)
+- **Styling**: Tailwind CSS v4 + DaisyUI v5
+- **Typography plugin**: `@tailwindcss/typography` (prose styling for story content)
+- **Fonts**: Google Fonts — Inter (body), Playfair Display (headings), loaded via `<link>` tags
+- **SEO**: `astro-seo` for meta tags, `@astrojs/sitemap` for sitemap, `@astrojs/rss` for RSS feed
+- **Theme**: Custom DaisyUI theme `londongrove` (light mode only)
 
 ## Commands
 
@@ -16,29 +21,46 @@ A community resource site bringing transparency and accessibility to local gover
 
 ## Project Structure
 
-- `src/layouts/BaseLayout.astro` — Main layout (header, footer, nav, mobile menu)
+- `src/layouts/Layout.astro` — Main layout (SEO, navbar, footer, `data-theme="londongrove"`)
+- `src/layouts/Markdown.astro` — Layout for static markdown pages (about, contact)
+- `src/components/Navbar.astro` — DaisyUI drawer (mobile) + navbar (desktop)
+- `src/components/Footer.astro` — 3-column DaisyUI footer
+- `src/components/Landing.astro` — Hero section for homepage
 - `src/pages/` — Astro pages (file-based routing)
-- `src/styles/global.css` — Tailwind directives and base styles
-- `tailwind.config.mjs` — Custom theme (colors, fonts)
-- `public/` — Static assets
+- `src/content/config.ts` — Content collection schema (`stories`)
+- `src/content/stories/` — Story markdown files
+- `src/styles/global.css` — Tailwind v4 directives, DaisyUI theme config
+- `public/` — Static assets (favicons)
 
 ## Design System
 
-### Colors (defined in `tailwind.config.mjs`)
-- `navy` (#11254d) — Header background, headings, primary buttons
-- `accent` (#0693e3) — Links, highlight buttons
-- `warm` (#e8a435) — Friendly accent, hover states in nav
-- `dark` (#32373c) — Body text
-- `light` (#f5f5f5) — Light backgrounds
-- `sage` (#cdcfc1) — Main page background (set via raw CSS in global.css, not `@apply`, due to Tailwind `@layer` limitation)
+### DaisyUI Theme (`londongrove`, defined in `global.css`)
+- `primary` (#11254d) — Navy, headings, primary buttons
+- `secondary` (#0693e3) — Blue accent, links, secondary buttons
+- `accent` (#e8a435) — Warm gold, friendly accent, hover states
+- `base-100` (#ffffff) — White, main page background
+- `base-200` (#f8f9fa) — Light gray, subtle sections
+- `base-300` (#e9ecef) — Borders, dividers
+- `base-content` (#32373c) — Dark, body text
+- `neutral` (#32373c) — Dark, same as base-content
 
 ### Typography
-- Body: PT Sans (`font-sans`)
-- Headings: Antic Slab (`font-heading`)
+- Body: Inter (`font-sans`)
+- Headings: Playfair Display (`font-heading`)
 
-## Known Gotchas
+## Content Collections
 
-- The sage background color is applied via raw CSS (`background-color: #cdcfc1`) in `global.css` rather than `@apply bg-sage` because Tailwind's custom colors can't be used with `@apply` inside `@layer base` directives.
+### Stories (`src/content/stories/`)
+Frontmatter schema:
+- `title` (string, required)
+- `description` (string, required)
+- `date` (date, required)
+- `cover` (string, optional) — cover image path
+- `tags` (string[], defaults to [])
+- `draft` (boolean, defaults to false)
+
+## Nav Links
+Home, Stories, About, Contact
 
 ## Git
 
