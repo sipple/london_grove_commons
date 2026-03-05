@@ -13,7 +13,7 @@ const currentPath = Astro.url.pathname;
 
   <div class="drawer-content flex flex-col">
     <header class="bg-primary">
-      <nav class="navbar max-w-6xl mx-auto px-4">
+      <nav class="navbar max-w-6xl mx-auto px-4 py-6">
         <div class="navbar-start">
           <label for="mobile-drawer" class="btn btn-ghost btn-square text-primary-content lg:hidden" aria-label="Open menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,6 +21,7 @@ const currentPath = Astro.url.pathname;
             </svg>
           </label>
           <a href="/" class="flex items-center gap-2 ml-1 lg:ml-0">
+            <img src="/londongrovelogo.png" alt="London Grove Township logo" class="w-32 h-32 rounded-full bg-white p-2" />
             <span class="font-heading text-xl font-bold text-primary-content">London Grove Commons</span>
           </a>
         </div>
@@ -31,7 +32,7 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={link.href}
                   class:list={[
-                    "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    "px-3 py-2 rounded-md text-sm md:text-xl font-medium transition-colors",
                     currentPath.startsWith(link.href)
                       ? "text-white bg-white/20"
                       : "text-primary-content/70 hover:text-white hover:bg-white/10"
@@ -55,7 +56,10 @@ const currentPath = Astro.url.pathname;
     <label for="mobile-drawer" aria-label="Close menu" class="drawer-overlay"></label>
     <div class="bg-primary min-h-full w-72 p-6">
       <div class="mb-8">
-        <a href="/" class="font-heading text-xl font-bold text-primary-content">London Grove Commons</a>
+        <a href="/" class="flex items-center gap-2 font-heading text-xl font-bold text-primary-content">
+          <img src="/londongrovelogo.png" alt="London Grove Township logo" class="w-32 h-32 rounded-full bg-white p-2" />
+          London Grove Commons
+        </a>
       </div>
       <ul class="space-y-1">
         {navLinks.map(link => (
