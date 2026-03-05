@@ -1,0 +1,156 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/videos', label: 'Videos' },
+  { href: '/meetings', label: 'Meetings' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="London Grove Commons — Your window into local government in London Grove, PA" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <title>{title} | London Grove Commons</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-navy text-white shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div>
+          <a href="/" class="block">
+            <span class="font-heading text-2xl md:text-3xl font-bold">London Grove Commons</span>
+            <span class="block text-sm text-warm mt-0.5">Your window into local government</span>
+          </a>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-white/90 hover:text-warm transition-colors text-sm font-semibold uppercase tracking-wide"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile nav -->
+      <nav
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-white/10"
+        aria-label="Mobile navigation"
+      >
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-white/90 hover:text-warm py-2 px-3 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold uppercase tracking-wide"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-dark/10 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- About -->
+          <div>
+            <h3 class="font-heading text-xl text-navy mb-3">London Grove Commons</h3>
+            <p class="text-sm leading-relaxed text-dark/70">
+              A community resource bringing transparency and accessibility to local government in London Grove Township, Pennsylvania.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="font-heading text-xl text-navy mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+              {navLinks.map(link => (
+                <li>
+                  <a href={link.href} class="text-dark/70 hover:text-navy transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href="https://www.londongrove.org" target="_blank" rel="noopener noreferrer" class="text-dark/70 hover:text-navy transition-colors">
+                  Official Township Site
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="font-heading text-xl text-navy mb-3">Township Contact</h3>
+            <address class="text-sm not-italic leading-relaxed space-y-1 text-dark/70">
+              <p>London Grove Township</p>
+              <p>372 Rose Hill Road</p>
+              <p>West Grove, PA 19390</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="border-t border-sage mt-10 pt-6 text-center text-sm text-dark/40">
+          <p>&copy; {new Date().getFullYear()} London Grove Commons. Not an official township website.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+
+      btn?.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu?.classList.toggle('hidden');
+
+        if (!expanded) {
+          menuIcon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        } else {
+          menuIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+      });
+    </script>
+  </body>
+</html>

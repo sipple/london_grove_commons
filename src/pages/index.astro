@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const cards = [
+  {
+    title: 'Watch Recent Meetings',
+    description: 'Catch up on Board of Supervisors meetings and public hearings at your convenience.',
+    href: '/videos',
+    icon: '🎬',
+  },
+  {
+    title: 'Meet Your Officials',
+    description: 'Learn about the people who represent London Grove Township and how to reach them.',
+    href: '/about',
+    icon: '👥',
+  },
+  {
+    title: 'Upcoming Events',
+    description: 'Stay informed about township meetings, community events, and public comment opportunities.',
+    href: '/meetings',
+    icon: '📅',
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading text-navy mb-6">
+        Welcome to <span class="text-warm">London Grove</span> Commons
+      </h1>
+      <p class="text-lg md:text-xl text-dark/70 max-w-2xl mx-auto leading-relaxed">
+        Your friendly guide to what's happening in London Grove Township. We make local government accessible, transparent, and easy to follow.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/videos"
+          class="inline-block bg-navy text-white font-bold px-8 py-3 rounded-xl hover:bg-navy/90 transition-colors text-lg"
+        >
+          Watch Meetings
+        </a>
+        <a
+          href="/about"
+          class="inline-block border-2 border-navy/20 text-navy font-bold px-8 py-3 rounded-xl hover:bg-navy/5 transition-colors text-lg"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-heading text-navy text-center mb-12">
+        Get Involved
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {cards.map(card => (
+          <a
+            href={card.href}
+            class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+          >
+            <div class="text-4xl mb-4">{card.icon}</div>
+            <h3 class="font-heading text-xl text-navy mb-2 group-hover:text-accent transition-colors">
+              {card.title}
+            </h3>
+            <p class="text-dark/70 text-sm leading-relaxed">
+              {card.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading text-navy mb-4">
+        Your Voice Matters
+      </h2>
+      <p class="text-dark/70 text-lg leading-relaxed mb-8">
+        Local government works best when residents are informed and engaged. London Grove Commons is here to help you stay connected with what's happening in your community.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-accent text-white font-bold px-8 py-3 rounded-xl hover:bg-accent/90 transition-colors text-lg"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+</BaseLayout>
