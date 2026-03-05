@@ -1,28 +1,28 @@
 ---
 title: "Walking the Land: A Morning with the Planning Commission"
-description: "We joined Planning Commission members on a site visit to see how they evaluate new development proposals — and why they take it so personally."
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
 date: 2026-02-15
 cover: "/images/covers/planning-commission.svg"
 tags: ["planning commission", "land use"]
 draft: false
 ---
 
-On a cold February morning, three members of the London Grove Township Planning Commission pulled on boots and stepped into a muddy field off Route 1. They were there to walk a parcel of land proposed for a 48-unit housing development.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 ## Why Site Visits Matter
 
-"You can't understand a piece of land from a map," said commission chair Linda Hartley, pointing toward a tree line that marks the edge of a floodplain. "You have to stand on it. You have to see where the water goes when it rains."
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-The commission conducts site visits for nearly every major application. It's not required — but it's become a point of pride.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
 ## Following the Water
 
-The group spent almost an hour tracing the path of a seasonal stream that runs through the property. The developer's plan routes stormwater into a detention basin on the western edge, but Hartley was concerned about overflow reaching the neighboring farm.
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
 
-"These are the conversations that matter," she said. "This is where we can actually make a difference."
+Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
 
 ## What Happens Next
 
-The commission will present their findings at the next public meeting. Residents are encouraged to attend and share their own observations about the site.
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
 
-*London Grove Commons will be there, and we'll share what we hear.*
+Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
